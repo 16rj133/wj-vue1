@@ -21,6 +21,12 @@
 </template>
 <script>
   export default{
+    created(){
+      this.$store.dispatch('getRotationImages');
+      //用于和接口传递获取数据的信息获取日历
+      this.$store.dispatch('getExamCalendar');
+      this.$store.dispatch('getLanguagesInfo');
+    },
     data () {
       return {
         rules: {

@@ -17,6 +17,7 @@
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="showInfoPage" divided>个人信息</el-dropdown-item>
+              <el-dropdown-item command="showProfile" divided>个人中心</el-dropdown-item>
               <el-dropdown-item command="showPasswordPage" divided>修改密码</el-dropdown-item>
               <el-dropdown-item command="logout" divided>注销</el-dropdown-item>
             </el-dropdown-menu>
@@ -75,6 +76,10 @@
                 <el-menu-item index="workRecord">
                   <i class="el-icon-menu"></i>
                   <span slot="title">作业记录</span>
+                </el-menu-item>
+                <el-menu-item index="exam">
+                  <i class="el-icon-menu"></i>
+                  <span slot="title">学生考试中心</span>
                 </el-menu-item>
               </el-menu>
             </div>
@@ -208,6 +213,9 @@
     mounted: function () {
     },
     methods: {
+      toProfile(){
+
+      },
       cancelEdit(){
         this.passwordVisible = false;
         this.pwds = {
@@ -254,6 +262,9 @@
            this.passwordVisible = true;
          } else if(cmd === 'showInfoPage') {
            this.infoVisible = true;
+         }else if(cmd === 'showProfile')
+         {
+           this.$router.push('/profile');
          }
        }
     }
