@@ -26,20 +26,19 @@ import TeacherShowSubmissionWork   from '@/components/teacher/showSubmissionWork
 //学生考试
 //import Login from '@/components/student/pages/Login/Login.vue'
 /*import ProfileInfo from '@/components/student/pages/ProfileInfo/ProfileInfo.vue'
-import ProfileStuScore from '@/components/student/pages/ProfileStuScore/ProfileStuScore.vue'
-import ProfileWrongCollection from '@/components/student/pages/ProfileWrongCollection/ProfileWrongCollection.vue'
+
+
 import SingleCollection from '@/components/student/pages/ProfileCollectionDetail/SingleCollection.vue'
 import MultipleCollection from '@/components/student/pages/ProfileCollectionDetail/MultipleCollection.vue'
 import JudgeCollection from '@/components/student/pages/ProfileCollectionDetail/JudgeCollection.vue'
 import FillCollection from '@/components/student/pages/ProfileCollectionDetail/FillCollection.vue'
-import ProfileScoreDetail from '@/components/student/pages/ProfileScoreDetail/ProfileScoreDetail.vue'
+
 import ProfilePswChange from '@/components/student/pages/ProfilePswChange/ProfilePswChange.vue'
 import ProfileInfoChange from '@/components/student/pages/ProfileInfoChange/ProfileInfoChange.vue'
 import ProfileFeedback from '@/components/student/pages/ProfileFeedback/ProfileFeedback.vue'
 import ProfileReplyDetail from '@/components/student/pages/ProfileReplyDetail/ProfileReplyDetail.vue'
 
-import HomePaper from '@/components/student/pages/HomePaper/HomePaper.vue'
-import HomePaperDetail from '@/components/student/pages/HomePaperDetail/HomePaperDetail.vue'
+
 
 import WrongDetail from '@/components/student/pages/WrongDetail/WrongDetail.vue'*/
 import StudentEHome from '@/components/student/pages/Home/test.vue'
@@ -48,6 +47,13 @@ import HomePaper from '@/components/student/pages/HomePaper/HomePaper.vue'
 import HomePaperDetail from '@/components/student/pages/HomePaperDetail/HomePaperDetail.vue'
 import HomePaperStart from '@/components/student/pages/HomePaperStart/HomePaperStart.vue'
 
+import SingleCollection from '@/components/student/pages/ProfileCollectionDetail/SingleCollection.vue'
+import MultipleCollection from '@/components/student/pages/ProfileCollectionDetail/MultipleCollection.vue'
+import JudgeCollection from '@/components/student/pages/ProfileCollectionDetail/JudgeCollection.vue'
+import FillCollection from '@/components/student/pages/ProfileCollectionDetail/FillCollection.vue'
+import ProfileWrongCollection from '@/components/student/pages/ProfileWrongCollection/ProfileWrongCollection.vue'
+import ProfileScoreDetail from '@/components/student/pages/ProfileScoreDetail/ProfileScoreDetail.vue'
+import ProfileStuScore from '@/components/student/pages/ProfileStuScore/ProfileStuScore.vue'
 import ProfileExamCalendar from '@/components/student/pages/ProfileExamCalendar/ProfileExamCalendar.vue'
 import Profile from '@/components/student/pages/Profile/Profile.vue'
 
@@ -57,6 +63,9 @@ import Profile from '@/components/student/pages/Profile/Profile.vue'
 //const Search = () => import('@/components/student/pages/Search/Search.vue')
 //const Profile = () => import('@/components/student/pages/Profile/Profile.vue')
 Vue.use(Router)
+
+//import Layout from '../components/teacher/views/layout/Layout'
+
 
 export default new Router({
   routes: [
@@ -125,6 +134,7 @@ export default new Router({
           path: '/showSubmissionWork',
           component: TeacherShowSubmissionWork
         },
+
         {
           path:'/profile',
           name:'个人考试中心',
@@ -135,7 +145,7 @@ export default new Router({
         },
         {
           name:'考试公告',
-          path:'/examcalendar',
+          path:'/exam/examcalendar',
           component:ProfileExamCalendar
         },
         {
@@ -152,6 +162,36 @@ export default new Router({
           name:'考试中',
           path:'/paper/detail/start/:paperId',
           component:HomePaperStart,
+        }, {
+          name:'查看分数',
+          path: '/profile/stuscore',
+          component: ProfileStuScore
+        },
+        {
+          name:'查看收藏错题',
+          path: '/profile/wrongcollection',
+          component: ProfileWrongCollection
+        },
+        {
+          path: '/profile/collection/single/:answerId',
+          component: SingleCollection
+        },
+        {
+          path: '/profile/collection/multiple/:answerId',
+          component: MultipleCollection
+        },
+        {
+          path: '/profile/collection/judge/:answerId',
+          component: JudgeCollection
+        },
+        {
+          path: '/profile/collection/fill/:answerId',
+          component: FillCollection
+        },
+        {
+          name:'查看分数细节',
+          path:'/profile/stuscore/detail/:paperId',
+          component:ProfileScoreDetail
         },
       ]
     },

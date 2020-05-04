@@ -207,7 +207,7 @@
     data() {
       return {
         //学号
-        sno: this.$store.state.userInfo.sno,
+        sno: this.$store.state.user.id,
         //当前日期
         currentDate: new Date(),
         //路由传值paperId
@@ -439,7 +439,7 @@
                   message:'交卷失败，数据库错误，请重新开始考试',
                   duration: 1500
                 });
-                vm.$router.replace('/home/paper/detail/' + vm.paperId)
+                vm.$router.replace('/paper/detail/' + vm.paperId)
               }
             }, 2000)
           }
@@ -485,7 +485,7 @@
               message:'交卷失败，数据库错误，请重新开始考试',
               duration: 1500
             });
-            this.$router.replace('/home/paper/detail/' + this.paperId)
+            this.$router.replace('/paper/detail/' + this.paperId)
           }
         },() => {
           //点击取消按钮操作
@@ -587,7 +587,7 @@
             this.refreshFirstCurrentTime(0);
             //返回试卷详情页面
             this.$router.isBack = true;
-            this.$router.replace('/home')
+            this.$router.replace('/')
           }
           else {
             Toast({
@@ -595,7 +595,7 @@
               duration: 1500
             });
             this.$router.isBack = true;
-            this.$router.replace('/home/paper/detail/' + this.paperId)
+            this.$router.replace('/paper/detail/' + this.paperId)
           }
         }, () => {
           //点击取消按钮操作

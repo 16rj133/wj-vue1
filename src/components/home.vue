@@ -61,7 +61,12 @@
                   <i class="el-icon-menu"></i>
                   <span>学生提交的作业</span>
                 </el-menu-item>
+                <el-menu-item index="dashboard">
+                  <i class="el-icon-menu"></i>
+                  <span slot="title">试题中心</span>
+                </el-menu-item>
               </el-menu>
+
             </div>
             <div v-else-if = "this.$store.state.user.type === '2'">
               <el-menu style="width: 180px;" unique-opened router >

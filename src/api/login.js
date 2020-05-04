@@ -1,7 +1,7 @@
 /*
   与后台交互模块 （依赖已封装的ajax函数）
  */
-import ajax from '@/config/ajax'
+import ajax from '../api/ajax'
 const BASE_URL = process.env.BASE_API + '/admin'
 
 // 校验管理员登录

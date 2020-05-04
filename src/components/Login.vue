@@ -14,7 +14,7 @@
     <el-checkbox class="login_remember" v-model="checked"
                  label-position="left"><span style="color: #505458">记住密码</span></el-checkbox>
     <el-form-item style="width: 100%">
-      <el-button type="primary" style="width: 40%;background: #505458;border: none" v-on:click="login">登录</el-button>
+      <el-button type="primary" style="width: 40%;background: #505458;border: none" @click="login">登录</el-button>
     </el-form-item>
   </el-form>
   </body>

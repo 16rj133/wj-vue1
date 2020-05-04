@@ -1,40 +1,63 @@
 <template>
-  <div>
-    <schart class="wrapper" :canvasId="canvasId" :type="type" :data="chartData" :options="options"/>
-  </div>
+  <ve-line :data="chartDataLineRanking" :settings="chartSettings" :extend="extend"></ve-line>
 </template>
 
 <script>
-  import Schart from 'vue-schart'
+  import {Toast, Indicator} from 'mint-ui'
+  import {reqScoreReport} from '../../api'
   export default {
-    props:["chartData"],
-    name: "",
     data() {
+
+      this.chartSettings = {
+        labelMap: {
+          'name': '代称',
+          'value': '成绩'
+        },
+        legendName: {
+          'name': '代称'
+        }
+      }
+      this.extend = {
+        series: {
+          label: {show: true, position: "top"}
+        }
+      }
       return {
-        canvasId: 'myCanvasLine',
-        type: 'line',
-        options: {
-          padding: 15,                   // canvas 内边距
-          bgColor: '#f5f5f5',            // 默认背景颜色
-          title: '参加该试题成绩排行',// 图表标题
-          titleColor: '#000000',         // 图表标题颜色
-          titlePosition: 'bottom',      // 图表标题位置: top / bottom
-          yEqual: 4,                     // y轴分成4等分
-          fillColor: '#ff4949',          // 默认填充颜色
-          contentColor: '#778899',       // 内容横线颜色
-          axisColor: '#666666',          // 坐标轴颜色
+        sno: this.$store.state.user.id,
+        paperId: this.$route.params.paperId,
+        chartDataLineRanking: {
+          columns: ['name', 'value'],
+          rows: [
+          ]
         }
       }
     },
-    methods: {},
-    components:{
-      Schart
+    created() {
+      Indicator.open({
+        text: '报告生成中...',
+        spinnerType: 'snake'
+      });
+      this.getScoreReport();
+    },
+    methods: {
+      async getScoreReport()
+  {
+    const {sno, paperId} = this;
+    let result = await
+    reqScoreReport({sno, paperId});
+    if (result.statu == 0) {
+      this.chartDataLineRanking.rows = result.data.chartDataLineRanking;
+      setTimeout(() => {
+        Indicator.close();
+    }, 500)
+    } else {
+      Indicator.close();
+      Toast({
+        message: result.msg,
+        duration: 1500
+      });
     }
   }
+  }
+  }
 </script>
-
-<style lang="stylus" type="text/stylus" rel="stylesheet/stylus" scoped>
-  .wrapper
-    width 95%
-    height 260px
-</style>

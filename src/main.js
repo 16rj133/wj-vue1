@@ -7,7 +7,15 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import 'echarts/theme/macarons.js'
 import store from './store'
+import VCharts from 'v-charts'
+//教师端
+//import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+//import 'icons' // icon
+// 引入图片查看器v-viewer
 
+//import '../mock' // simulation data
+
+Vue.use(VCharts);
 //按需引入Muse-UI组件
 import { Radio, Checkbox, TextField, Button, Icon } from 'muse-ui'
 // import 'muse-ui/lib/styles/base.less';
@@ -46,9 +54,11 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI);
 
-Vue.use(ElementUI)
+
 Vue.use(mavonEditor)
 
+
+/* eslint-disable no-new */
 // 设置反向代理，前端请求默认发送到 http://localhost:8223/api
 var axios = require('axios')
 axios.defaults.baseURL = 'http://localhost:8223/api'
@@ -56,7 +66,10 @@ axios.defaults.baseURL = 'http://localhost:8223/api'
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+import vueRsource from 'vue-resource'
+
+Vue.use(vueRsource);
+Vue.use(ElementUI)
 new Vue({
   el: '#app',
   render: h => h(App),
