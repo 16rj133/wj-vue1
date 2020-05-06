@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import app from './modules/app'
+// import user from './modules/user'
+import teacher from './modules/teacher'
 // 引入四个基本模块
 import state from './state'
 import mutations from './mutations'
@@ -12,6 +14,11 @@ export default new Vuex.Store({
   mutations,
   actions,
   getters,
+  modules: {
+    app,
+    // user,
+    teacher
+  },
   state: {
     rotationImages: [],  //首页轮播图数组
     userInfo: {},// 用户信息

@@ -10,4 +10,5 @@ export default {
       state.fillAnswers.filter(item => item).length
   },
   unreadMsgCount: state => state.unreadMsgCount
+
 }

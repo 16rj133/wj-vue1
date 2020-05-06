@@ -69,7 +69,14 @@ Vue.config.productionTip = false
 import vueRsource from 'vue-resource'
 
 Vue.use(vueRsource);
-Vue.use(ElementUI)
+Vue.use(ElementUI);
+
+//新加入的教师部分
+import './icons'
+import './components/teacher/mock' // simulation data
+
+// 引入过滤器
+import './components/teacher/filters'
 new Vue({
   el: '#app',
   render: h => h(App),

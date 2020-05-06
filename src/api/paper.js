@@ -1,5 +1,5 @@
-import ajax from '@/config/ajax'
-const BASE_URL = process.env.BASE_API + '/admin'
+import ajax from '../components/teacher/config/ajax'
+const BASE_URL =  'http://localhost:8223/api'
 
 // 获取全部公告信息
 export const reqGetPapersList = () => ajax(BASE_URL + '/getTeacherPapersList')

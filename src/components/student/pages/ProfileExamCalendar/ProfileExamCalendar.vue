@@ -10,7 +10,7 @@
     <div class="exam_calendar_detail" v-if="examCalendar.length">
       <ul class="exam_calendar_detail_ul" v-for="(item, index) in examCalendar" :key="index">
         <li class="exam_calendar_time_li">
-          <span class="exam_calendar_time">发布时间：{{item.noticeCreateTime}}</span>
+          <span class="exam_calendar_time">发布时间：{{dateTime(item.noticeCreateTime)}}</span>
         </li>
         <li class="message_li">
           <viewer>
@@ -65,7 +65,16 @@
     created(){
       this.$store.dispatch('getExamCalendar');
     },
-    methods: {},
+    methods: {
+      dateTime(rowData){
+        // console.log(rowData)
+        var d = new Date(rowData)
+        // var a= d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();              /*d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1*/
+        var a= d.getFullYear() + '-' + (d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1) + '-' + (d.getDate()<10 ? "0" +d.getDate():d.getDate())+ ' ' + (d.getHours()<10 ?"0"+d.getDate():d.getDate()) + ':' + (d.getMinutes()<10 ? "0" + d.getMinutes(): d.getMinutes()) + ':' + (d.getSeconds()<10 ? "0" + d.getSeconds() : d.getSeconds() );
+        // console.log(a)
+        return a
+      },
+    },
     components:{
       HeaderTop,
       BackToTop

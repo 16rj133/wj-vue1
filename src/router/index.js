@@ -65,7 +65,7 @@ import Profile from '@/components/student/pages/Profile/Profile.vue'
 Vue.use(Router)
 
 //import Layout from '../components/teacher/views/layout/Layout'
-
+import DashBoard from '@/components/teacher/views/dashboard/index.vue'
 
 export default new Router({
   routes: [
@@ -134,7 +134,11 @@ export default new Router({
           path: '/showSubmissionWork',
           component: TeacherShowSubmissionWork
         },
-
+        {
+          path: '/dashboard',
+          name: '试卷管理',
+          component: () => import('../components/teacher/views/paper/paperInfo')
+},
         {
           path:'/profile',
           name:'个人考试中心',

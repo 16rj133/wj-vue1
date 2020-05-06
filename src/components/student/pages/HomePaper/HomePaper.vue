@@ -73,7 +73,7 @@
               试卷类型：{{item.paperType == 1 ? '随机组卷' : '固定组卷'}}
             </div>
             <div class="paper_create_time">
-              发布时间：{{item.paperCreateTime}}
+              发布时间：{{dateTime(item.paperCreateTime)}}
             </div>
             <div class="paper_difficulty">
               <span>难度系数：</span>
@@ -173,6 +173,14 @@
       this.getPapersInfo();
     },
     methods: {
+      dateTime(rowData){
+        // console.log(rowData)
+        var d = new Date(rowData)
+        // var a= d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();              /*d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1*/
+        var a= d.getFullYear() + '-' + (d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1) + '-' + (d.getDate()<10 ? "0" +d.getDate():d.getDate())+ ' ' + (d.getHours()<10 ?"0"+d.getDate():d.getDate()) + ':' + (d.getMinutes()<10 ? "0" + d.getMinutes(): d.getMinutes()) + ':' + (d.getSeconds()<10 ? "0" + d.getSeconds() : d.getSeconds() );
+        // console.log(a)
+        return a
+      },
       loadTop() {
         this.getPapersInfo()
         setTimeout(() => {

@@ -31,7 +31,7 @@
             试卷类型：{{item.paperType == 1 ? '随机组卷' : '固定组卷'}}
           </div>
           <div class="score_create_time">
-            发布时间：{{item.paperCreateTime}}
+            发布时间：{{dateTime(item.paperCreateTime)}}
           </div>
           <div class="score_difficulty">
             <span>难度系数：</span>
@@ -44,10 +44,10 @@
             试卷总分：{{item.totalScore}}分
           </div>
           <div class="score_item">
-            开始考试：{{item.startTime}}
+            开始考试：{{dateTime(item.startTime)}}
           </div>
           <div class="score_item">
-            结束考试：{{item.endTime}}
+            结束考试：{{dateTime(item.endTime)}}
           </div>
           <div class="score_item score_important">
             最终成绩：{{item.score || 0}}分{{item.score == null ? '（强制关闭考试页面退出考试）' : ''}}
@@ -120,6 +120,14 @@
       this.getPaperScoreInfo();
     },
     methods: {
+      dateTime(rowData){
+        // console.log(rowData)
+        var d = new Date(rowData)
+        // var a= d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();              /*d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1*/
+        var a= d.getFullYear() + '-' + (d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1) + '-' + (d.getDate()<10 ? "0" +d.getDate():d.getDate())+ ' ' + (d.getHours()<10 ?"0"+d.getDate():d.getDate()) + ':' + (d.getMinutes()<10 ? "0" + d.getMinutes(): d.getMinutes()) + ':' + (d.getSeconds()<10 ? "0" + d.getSeconds() : d.getSeconds() );
+        // console.log(a)
+        return a
+      },
       loadTop() {
         this.getPaperScoreInfo()
         setTimeout(() => {

@@ -52,7 +52,7 @@
             <i class="iconfont iconshijian"></i>
             发布时间：
           </span>
-          {{paperInfo.paperCreateTime}}
+          {{dateTime(paperInfo.paperCreateTime)}}
         </div>
 
         <div class="paper_total_que">
@@ -169,6 +169,15 @@
       }
     },
     methods: {
+      dateTime(rowData){
+        // console.log(rowData)
+        var d = new Date(rowData)
+        // var a= d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();              /*d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1*/
+        var a= d.getFullYear() + '-' + (d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1) + '-' + (d.getDate()<10 ? "0" +d.getDate():d.getDate())+ ' ' + (d.getHours()<10 ?"0"+d.getDate():d.getDate()) + ':' + (d.getMinutes()<10 ? "0" + d.getMinutes(): d.getMinutes()) + ':' + (d.getSeconds()<10 ? "0" + d.getSeconds() : d.getSeconds() );
+        // console.log(a)
+        return a
+      },
+
       // 通过paperId获取试卷详情信息
       async getPaperInfoByPaperId(){
         const {paperId} = this;
