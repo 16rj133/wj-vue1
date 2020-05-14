@@ -64,7 +64,7 @@ import Profile from '@/components/student/pages/Profile/Profile.vue'
 //const Profile = () => import('@/components/student/pages/Profile/Profile.vue')
 Vue.use(Router)
 
-//import Layout from '../components/teacher/views/layout/Layout'
+import Layout from '../components/teacher/views/bankManage/bankSingle/singleInfo'
 import DashBoard from '@/components/teacher/views/dashboard/index.vue'
 
 export default new Router({
@@ -138,7 +138,103 @@ export default new Router({
           path: '/dashboard',
           name: '试卷管理',
           component: () => import('../components/teacher/views/paper/paperInfo')
+},{
+      path: '/bank',
+      component: Layout,
+      redirect: '/bank/bank-single/single-info',
+      name: 'Bank',
+      meta: { title: '题库管理', icon: 'que-bank' },
+      children: [
+        {
+          path: 'bank-single',
+          component: () => import('../components/teacher/views/bankManage/bankSingle/index'),
+        name: 'BankSingle',
+  redirect: '/bank/bank-single/single-info',
+  meta: { title: '单选题库管理', icon: 'single-bank' },
+children: [
+  {
+    path: 'single-info',
+    name: 'SingleInfo',
+    component: () => import('../components/teacher/views/bankManage/bankSingle/singleInfo'),
+  meta: { title: '单选题信息管理', icon: 'single-info' }
 },
+{
+  path: 'single-upload',
+    name: 'SingleUpload',
+  component: () => import('../components/teacher/views/bankManage/bankSingle/singleUpload'),
+  meta: { title: '上传单选题', icon: 'excel' }
+}
+]
+},
+{
+  path: 'bank-multiple',
+    component: () => import('../components/teacher/views/bankManage/bankMultiple/index'),
+  name: 'BankMultiple',
+  redirect: '/bank/bank-multiple/multiple-info',
+  meta: { title: '多选题库管理', icon: 'multiple-bank' },
+  children: [
+    {
+      path: 'multiple-info',
+      name: 'MultipleInfo',
+      component: () => import('../components/teacher/views/bankManage/bankMultiple/multipleInfo'),
+    meta: { title: '多选题信息管理', icon: 'multiple-info' }
+},
+  {
+    path: 'multiple-upload',
+      name: 'MultipleUpload',
+    component: () => import('../components/teacher/views/bankManage/bankMultiple/multipleUpload'),
+    meta: { title: '上传多选题', icon: 'excel' }
+  }
+]
+},
+{
+  path: 'bank-judge',
+    component: () => import('../components/teacher/views/bankManage/bankJudge/index'),
+  name: 'BankJudge',
+  redirect: '/bank/bank-judge/judge-info',
+  meta: { title: '判断题库管理', icon: 'judge-bank' },
+  children: [
+    {
+      path: 'judge-info',
+      name: 'JudgeInfo',
+      component: () => import('../components/teacher/views/bankManage/bankJudge/judgeInfo'),
+    meta: { title: '判断题信息管理', icon: 'judge-info' }
+},
+  {
+    path: 'judge-upload',
+      name: 'JudgeUpload',
+    component: () => import('../components/teacher/views/bankManage/bankJudge/judgeUpload'),
+    meta: { title: '上传判断题', icon: 'excel' }
+  }
+]
+},
+{
+  path: 'bank-fill',
+    component: () => import('../components/teacher/views/bankManage/bankFill/index'),
+  name: 'BankFill',
+  redirect: '/bank/bank-fill/fill-info',
+  meta: { title: '填空题库管理', icon: 'fill-bank' },
+  children: [
+    {
+      path: 'fill-info',
+      name: 'FillInfo',
+      component: () => import('../components/teacher/views/bankManage/bankFill/fillInfo'),
+    meta: { title: '填空题信息管理', icon: 'fill-info' }
+},
+  {
+    path: 'fill-upload',
+      name: 'FillUpload',
+    component: () => import('../components/teacher/views/bankManage/bankFill/fillUpload'),
+    meta: { title: '上传填空题', icon: 'excel' }
+  }
+]
+}
+]
+},{
+      path: '/notice',
+      name: '公告管理',
+      component: () => import('../components/teacher/views/notice/infoTable')
+  },
         {
           path:'/profile',
           name:'个人考试中心',

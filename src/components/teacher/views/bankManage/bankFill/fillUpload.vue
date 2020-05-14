@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import UploadExcelComponent from '@/components/UploadExcel/index.vue'
-import waves from '@/directive/waves' // Waves directive
-import { reqInsertFillList } from '@/api/bankManage'
+import UploadExcelComponent from '../../../components/UploadExcel/index.vue'
+import waves from '../../../directive/waves' // Waves directive
+import { reqInsertFillList } from '../../../../../api/bankManage'
 export default {
   name: 'FillUpload',
   components: { UploadExcelComponent },
@@ -30,7 +30,7 @@ export default {
   methods: {
     handleDownload() {
       this.downloadLoading = true
-      import('@/vendor/Export2Excel').then(excel => {
+      import('../../../vendor/Export2Excel').then(excel => {
         const tHeader = [
           '(必填)题目内容',
           '(必填)题目答案(填写正确答案字符串)',

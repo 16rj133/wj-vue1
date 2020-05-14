@@ -1,4 +1,4 @@
-import ajax from '@/config/ajax'
+import ajax from '../components/teacher/config/ajax'
 const BASE_URL = process.env.BASE_API + '/admin'
 
 // 获取全部单选题信息

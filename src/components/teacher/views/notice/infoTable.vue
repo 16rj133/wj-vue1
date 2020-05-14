@@ -43,7 +43,7 @@
       </el-table-column>
       <el-table-column prop="noticeCreateTime" sortable label="发布公告时间" align="center" width="220">
         <template slot-scope="scope">
-          <span>{{ scope.row.noticeCreateTime | date-format }}</span>
+          <span>{{ dateTime(scope.row.noticeCreateTime)}}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding" width="220">
@@ -86,11 +86,11 @@
 
 <script>
 /* eslint-disable */
-import { reqGetNoticesList, reqSearchNoticesList, reqInsertNoticeInfo, reqUpdateNoticeInfo, reqDeleteNotice } from '@/api/notice'
-import waves from '@/directive/waves' // Waves directive
-import { parseTime } from '@/utils'
-import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
-import BackToTop from '@/components/BackToTop'
+import { reqGetNoticesList, reqSearchNoticesList, reqInsertNoticeInfo, reqUpdateNoticeInfo, reqDeleteNotice } from '../../../../api/notice'
+import waves from '../../directive/waves' // Waves directive
+import { parseTime } from '../../../../utils'
+import Pagination from '../../components/Pagination' // Secondary package based on el-pagination
+import BackToTop from '../../components/BackToTop'
 
 export default {
   name: 'InfoTable',
@@ -134,6 +134,14 @@ export default {
     this.getList()
   },
   methods: {
+	  dateTime(rowData){
+        // console.log(rowData)
+        var d = new Date(rowData)
+        // var a= d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();              /*d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1*/
+        var a= d.getFullYear() + '-' + (d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1) + '-' + (d.getDate()<10 ? "0" +d.getDate():d.getDate())+ ' ' + (d.getHours()<10 ?"0"+d.getDate():d.getDate()) + ':' + (d.getMinutes()<10 ? "0" + d.getMinutes(): d.getMinutes()) + ':' + (d.getSeconds()<10 ? "0" + d.getSeconds() : d.getSeconds() );
+        // console.log(a)
+        return a
+      },
     async getList() {
       this.listLoading = true
       let result = await reqGetNoticesList()

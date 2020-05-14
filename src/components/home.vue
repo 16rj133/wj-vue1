@@ -65,6 +65,14 @@
                   <i class="el-icon-menu"></i>
                   <span slot="title">试题中心</span>
                 </el-menu-item>
+                <el-menu-item index="notice">
+                  <i class="el-icon-menu"></i>
+                  <span slot="title">公告管理</span>
+                </el-menu-item>
+                <el-menu-item index="bank">
+                  <i class="el-icon-menu"></i>
+                  <span slot="title">题库管理</span>
+                </el-menu-item>
               </el-menu>
 
             </div>

@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import UploadExcelComponent from '@/components/UploadExcel/index.vue'
-import waves from '@/directive/waves' // Waves directive
-import { reqInsertMultipleList } from '@/api/bankManage'
+import UploadExcelComponent from '../../../components/UploadExcel/index.vue'
+import waves from '../../../directive/waves' // Waves directive
+import { reqInsertMultipleList } from '../../../../../api/bankManage'
 export default {
   name: 'MultipleUpload',
   components: { UploadExcelComponent },
@@ -30,7 +30,7 @@ export default {
   methods: {
     handleDownload() {
       this.downloadLoading = true
-      import('@/vendor/Export2Excel').then(excel => {
+      import('../../../vendor/Export2Excel').then(excel => {
         const tHeader = [
           '(必填)题目内容',
           '(必填)选项A内容(内容必须以字符A加:开头)',

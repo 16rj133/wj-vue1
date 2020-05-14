@@ -190,10 +190,10 @@
 </template>
 
 <script>
-import { reqGetMultipleList, reqSearchMultipleList, reqDeleteMultiple, reqInsertMultipleInfo, reqUpdateMultipleInfo } from '@/api/bankManage'
-import waves from '@/directive/waves' // Waves directive
-import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
-import BackToTop from '@/components/BackToTop'
+import { reqGetMultipleList, reqSearchMultipleList, reqDeleteMultiple, reqInsertMultipleInfo, reqUpdateMultipleInfo } from '../../../../../api/bankManage'
+import waves from '../../../directive/waves' // Waves directive
+import Pagination from '../../../components/Pagination' // Secondary package based on el-pagination
+import BackToTop from '../../../components/BackToTop'
 
 export default {
   name: 'MultipleInfo',
